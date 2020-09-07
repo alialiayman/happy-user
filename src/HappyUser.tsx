@@ -65,7 +65,7 @@ const HappyUser = ({ user }: any) => {
                                                                     </Grid>
                                                                     <Grid item xs={6}>
                                                                         <FieldArray name={`user-pieces.${index}.values`}>
-                                                                            {({ removeValue, pushValue }) => (
+                                                                            {({ remove: removeValue, push: pushValue }) => (
                                                                                 <>
                                                                                     <Grid container spacing={2} justify="space-between" alignItems="center">
                                                                                         {ups &&
