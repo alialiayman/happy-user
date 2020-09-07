@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, FormControl, Grid, IconButton, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardHeader, Grid, IconButton, Paper, TextField, Typography } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -152,54 +152,21 @@ const HappyUser = ({ user }: any) => {
                         title="User Form"
                         subheader="View with Typography"></CardHeader>
                     <CardContent>
-                        <Grid container spacing={2} justify="space-between" >
-
-                            <Grid item xs >
-                                <Typography variant="h6">Given Names(s)</Typography>
-                                <Typography variant="body1" color="textSecondary">{usr.givenName}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Typography variant="h6">Last Name</Typography>
-                                <Typography variant="body1" color="textSecondary">{usr.lastName}</Typography>
-
-                            </Grid>
-
-                            <Grid item xs={12} container justify="space-between" alignItems="center" spacing={2}>
-                                <Grid item>
-
-                                    <Typography variant="h6">Birth Date</Typography>
-                                    <Typography variant="body1" color="textSecondary">{usr.birthDate}</Typography>
-                                </Grid>
-                                <Grid item xs>
-
-                                    <Typography variant="h6">Deceaced</Typography>
-                                    <Typography variant="body1" color="textSecondary">{usr.deceased ? 'Yes' : 'No'}</Typography>
-                                </Grid>
-
-                                <Grid item>
-
-                                    <Typography variant="h6">Gender</Typography>
-                                    <Typography variant="body1" color="textSecondary">{usr.gender}</Typography>
-                                </Grid>
-
-                                <Grid item xs={12} container alignItems="center" justify="space-between" spacing={4}>
-                                    <Grid item xs>
-                                        <FormControl fullWidth disabled>
-                                            <InputLabel>Country</InputLabel>
-                                            <Select value={usr.country}  >
-                                                <MenuItem value={1}>USA</MenuItem>
-                                                <MenuItem value={44}>UK</MenuItem>
-                                                <MenuItem value={33}>France</MenuItem>
-                                            </Select>
-
-                                        </FormControl>
+                        <Grid container justify="space-between">
+                            {usr["user-pieces"].map((up: any) => (
+                                <Grid container justify="space-between">
+                                    <Grid item xs={5}>
+                                        <Typography variant="h5">{`Key: ${up.key}`}</Typography>
                                     </Grid>
-                                    <Grid item xs={2}>
-                                        <Typography variant="h6">Time</Typography>
-                                        <Typography variant="body1" color="textSecondary">{usr.empTime}</Typography>
+                                    <Grid item xs={7} container direction="column">
+                                        {up.values.map((v:any) => (
+                                            <Grid item>
+                                                <Typography color="textSecondary" variant="body1">{v}</Typography>
+                                                </Grid>
+                                        ))}
                                     </Grid>
                                 </Grid>
-                            </Grid>
+                            ))}
                         </Grid>
                     </CardContent>
                     <CardActions>
